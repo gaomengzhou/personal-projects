@@ -1,0 +1,281 @@
+@charset "utf-8";
+
+.header {
+    width: 100%;
+    /* overflow: hidden; */
+    height: 30px;
+    background-color: #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.nav {
+    width: 1200px;
+    height: 30px;
+    background-color: #eee;
+}
+
+.nav ul li {
+    width: 68px;
+    height: 20px;
+    margin-top: 5px;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    border-right: 1px solid #c6c6c6;
+}
+
+.nav ul li.borderNone {
+    border: none;
+}
+
+.nav ul li a {
+    margin-top: -5px;
+    display: block;
+    color: #323232;
+}
+
+.nav ul li a:hover {
+    color: #1cbaeb;
+}
+
+.nav .left {
+    background: url(../images/FireShot-Capture_06.png) no-repeat left 8px;
+}
+
+.nav .right {
+    background: url(../images/FireShot-Capture_03.png) no-repeat left 6px;
+}
+
+/* 头部下部分 logo 搜索 登入 注册 */
+.headerbottom {
+    width: 1200px;
+    height: 98px;
+    background-color: #fefefe;
+    margin-top: 30px;
+}
+
+.headerbottom .search_input {
+    width: 330px;
+    height: 28px;
+    border: 3px solid #0a9fe6;
+    vertical-align: top;
+    padding-left: 30px;
+    background: url(../images/fangda_03.png) no-repeat 10px;
+}
+
+.headerbottom .search_btn {
+    width: 70px;
+    height: 34px;
+    background-color: #0a9fe6;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0 3px 3px 0;
+    border: none;
+}
+
+.headerbottom .search {
+    margin-top: 27px;
+    margin-left: 120px;
+}
+
+.headerbottom .search p {
+    margin-top: 5px;
+    color: #656565;
+}
+
+.headerbottom .search p a {
+    margin-right: 20px;
+    color: #656565;
+}
+
+.headerbottom .search p span:nth-child(1) {
+    margin-left: 7px;
+}
+
+.headerbottom p:nth-child(1) {
+    background-color: #f4a523;
+    width: 115px;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.headerbottom p:nth-child(2) {
+    background-color: #2ba0de;
+    width: 115px;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+}
+
+.headerbottom p {
+    cursor: pointer;
+}
+
+.headerbottom p span {
+
+    display: block;
+    width: 33px;
+    height: 22px;
+    float: left;
+}
+
+.headerbottom p .login_span {
+    background: url(../images/loginLogo_03.png) no-repeat center;
+    margin-top: 6px;
+    border-right: 1px solid #f7c065;
+}
+
+.headerbottom p .register_span {
+    background: url(../images/loginLogo_06.png) no-repeat center;
+    margin-top: 6px;
+    border-right: 1px solid #6bbce8;
+}
+
+.headerbottom .login {
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 网页底部 */
+.footer {
+    width: 100%;
+    background-color: #f4f4f4;
+}
+
+.footercontent {
+    width: 1200px;
+    overflow: hidden;
+}
+
+.footercontent ul {
+    height: 100px;
+    line-height: 50px;
+    border-bottom: 2px solid #d3d3d3;
+    margin-bottom: 35px;
+}
+
+.footercontent ul li {
+    float: left;
+    width: 299px;
+    border-right: 1px solid #dbdbdb;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    margin-top: 25px;
+}
+
+.footercontent ul li.fontBg4 {
+    border: 0;
+}
+
+.footercontent ul li.fontBg4 span {
+    background: url(../images/fontlogo_09.png) no-repeat left center;
+    display: block;
+    float: left;
+    /* width: 50px; */
+    height: 50px;
+    text-indent: 4em;
+    margin-left: 32px;
+}
+
+.footercontent ul li.fontBg3 span {
+    background: url(../images/fontlogo_07.png) no-repeat left center;
+    border: none;
+    display: block;
+    float: left;
+    /* width: 50px; */
+    height: 50px;
+    text-indent: 4em;
+    margin-left: 32px;
+}
+
+.footercontent ul li.fontBg2 span {
+    background: url(../images/fontlogo_05.png) no-repeat left center;
+    border: none;
+    display: block;
+    float: left;
+    /* width: 50px; */
+    height: 50px;
+    text-indent: 4em;
+    margin-left: 32px;
+}
+
+.footercontent ul li.fontBg1 span {
+    background: url(../images/fontlogo_03.png) no-repeat left center;
+    border: none;
+    display: block;
+    float: left;
+    /* width: 50px; */
+    height: 50px;
+    text-indent: 4em;
+    margin-left: 32px;
+}
+
+.footercontent dl {
+    float: left;
+    margin-right: 12%;
+}
+
+.footercontent dl:nth-child(6) {
+    margin-right: 0;
+}
+
+.footercontent dl dt {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.footercontent dl dd {
+    line-height: 24px;
+}
+
+.footercontent dl dd a {
+    color: #656565;
+}
+
+.footercontent dl dd a:hover {
+    color: #1cbaeb;
+}
+
+.footer .erweiCode {
+    width: 224px;
+    height: 114px;
+    background: url(../images/weixin.png) no-repeat left center;
+    background-size: 100px 100px
+}
+
+.footer .erweiCode p {
+    margin-left: 120px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.footer .footer_bottmo {
+    width: 100%;
+    height: 37px;
+    background-color: #e7e7e7;
+    text-align: center;
+    color: #7f7f7f;
+    line-height: 37px;
+    margin-top: 30px;
+}
