@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/Reset.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./javaScript/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav center">
+            <ul class="left fl">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">特接新品</a></li>
+                <li><a href="#">热卖商品</a></li>
+                <li class="borderNone"><a href="#">优惠专区</a></li>
+            </ul>
+            <ul class="right fr">
+                <li><a href="#">登入</a></li>
+                <li><a href="#">买家中心</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="#">企业简介</a></li>
+                <li class="borderNone"><a href="#">帮助中心</a></li>
+            </ul>
+            <!-- logo input login -->
+
+        </div>
+    </div>
+    <div class="headerbottom center">
+        <div class="logo fl">
+            <a href="#"><img src="./images/logo.png" alt=""></a>
+        </div>
+        <div class="search fl">
+            <input type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn">搜 索</button>
+            <p>热门搜索 ：<a href="#">刀锋战士</a>
+                <a href="#">钓箱</a>
+                <a href="#">线</a>
+                <a href="#">轮</a>
+                <a href="#">太空豆</a>
+                <a href="#">路亚竿</a>
+            </p>
+        </div>
+        <div class="login fr">
+            <p class="fl"><span class="login_span"></span>买家登入</p>
+            <p class="fl"><span class="register_span"></span>申请注册</p>
+        </div>
+    </div>
+    <!-- banner部分 -->
+
+    <div class="banner_box">
+        <div class="banner center">
+            <div class="banner_left fl">
+                <h3>进入商品所搜</h3>
+                <ul class="goodsList">
+                    <li class="goods_li_1">
+                        <img src="./images/goodsListLogo_03.png" alt="">
+                        <p>湖钓休闲</p>
+                        <span>抛竿.</span><span>溪流竿.</span><span>湖钓轮</span>
+                        <dl>
+                            <dd>
+                                <a href="#">溪流竿</a>
+                                <a href="#">本流竿</a>
+                                <a href="#">抛竿</a>
+                                <a href="#">矶投竿</a>
+                                <a href="#">远投竿</a>
+                                <a href="#">矶钓竿</a>
+                                <a href="#">前打竿</a>
+                                <a href="#">筏钓竿</a>
+                                <a href="#">湖钓轮</a>
+                                <a href="#">前打轮</a>
+                                <a href="#">筏钓轮</a>
+                                <a href="#">中通轮</a>
+                                <a href="#">休闲线</a>
+                                <a href="#">湖钓钩</a>
+                                <a href="#">爆炸钩</a>
+                                <a href="#">串钩仕挂</a>
+                                <a href="#">湖钓配件</a>
+                                <a href="#">钓椅钓台</a>
+                                <a href="#">湖钓装备</a>
+                        </dl>
+                    </li>
+                    <li class="goods_li_2">
+                        <img src="./images/goodsListLogo_06.png" alt="">
+                        <p>台钓竞技</p>
+                        <span>鲤鱼竿.</span><span>大物竿.</span><span>配件</span>
+                        <dl>
+                            <dd>
+                                <a href="#">鲫鱼竿</a>
+                                <a href="#">综合竿</a>
+                                <a href="#">鲤鱼竿</a>
+                                <a href="#">竞技竿</a>
+                                <a href="#">黑坑竿</a>
+                                <a href="#">大物竿</a>
+                                <a href="#">台钓线</a>
+                                <a href="#">台钓钩</a>
+                                <a href="#">线组仕挂</a>
+                                <a href="#">台钓浮漂</a>
+                                <a href="#">台钓配件</a>
+                                <a href="#">钓灯</a>
+                                <a href="#">抄网支架</a>
+                                <a href="#">钓箱</a>
+                                <a href="#">台钓竿包</a>
+                                <a href="#">鱼护</a>
+                                <a href="#">钓鱼伞</a>
+                                <a href="#">台钓服饰</a>
+                                <a href="#">湖钓装备</a>
+                                <a href="#">饵料</a>
+                        </dl>
+                    </li>
+                    <li class="goods_li_3">
+                        <img src="./images/goodsListLogo_08.png" alt="">
+                        <p>路亚时尚</p>
+                        <span>路亚竿.</span><span>水滴轮.</span><span>假饵</span>
+                        <dl>
+                            <dd>
+                                <a href="#">路亚竿</a>
+                                <a href="#">马口竿</a>
+                                <a href="#">雷强竿</a>
+                                <a href="#">路亚轮</a>
+                                <a href="#">水滴轮</a>
+                                <a href="#">路亚线</a>
+                                <a href="#">路亚钩饵</a>
+                                <a href="#">路亚配件</a>
+                                <a href="#">路亚装备</a>
+                        </dl>
+                    </li>
+                    <li class="goods_li_4">
+                        <img src="./images/goodsListLogo_10.png" alt="">
+                        <p>海钓博弈</p>
+                        <span>矶竿.</span><span>海钓轮.</span><span>矶钓轮</span>
+                        <dl>
+                            <dd>
+                                <a href="#">铁板船竿</a>
+                                <a href="#">海路亚竿</a>
+                                <a href="#">海水矶竿</a>
+                                <a href="#">浅海船竿</a>
+                                <a href="#">海钓轮</a>
+                                <a href="#">海钓线</a>
+                                <a href="#">海钓配件</a>
+                                <a href="#">海钓装备</a>
+                                <a href="#">海钓钩饵</a>
+                        </dl>
+                    </li>
+                    <li class="goods_li_5">
+                        <img src="./images/goodsListLogo_12.png" alt="">
+                        <p>品牌专区</p>
+                        <span>钓竿.</span><span>渔轮.</span><span>鱼线.</span><span>装备</span>
+                        <dl>
+                            <dd class="imgList">
+                                <a href="#"><img src="./images/20190125143629996.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125153027317.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125153307816.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125153456603.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125153822405.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125154354897.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125160055692.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125160310126.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125160508856.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125161343645.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125161643994.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125161909654.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125162357194.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125163517324.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125163657379.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125164459603.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125170413625.jpg" alt=""></a>
+                                <a href="#"><img src="./images/20190125170701731.jpg" alt=""></a>
+
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="banner_img fl">
+                <ul class="content" id="content">
+                    <li class="selected"><img src="/images/lunbo1.jpg" alt=""></li>
+                    <li><img src="./images/lunbo2.jpg" alt=""></li>
+                    <li><img src="/images/lunbo3.jpg" alt=""></li>
+                    <li><img src="/images/lunbo4.jpg" alt=""></li>
+                    <li><img src="/images/lunbo5.jpg" alt=""></li>
+                </ul>
+                <!-- <span class="selected_left" id="selected_left"></span>
+                <span class="selected_right" id="selected_right"></span> -->
+                <ul class="nav" id="nav">
+                    <li class="selected"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="banner_right fr">
+                <div class="newsDiv">
+                    <h4 class="fl">新闻公告</h4>
+                    <a href="#" class="fr">更多&gt;</a>
+                </div>
+                <div class="newList">
+                    <p><span>&gt;</span><a href="#">海明威16年度全国经销商会议</a>></p>
+                    <p><span>&gt;</span><a href="#">2018海明威年中团建活动</a>></p>
+                    <p><span>&gt;</span><a href="#">中国钓具委员会莅临海明威</a>></p>
+                    <p><span>&gt;</span><a href="#">海明威荣登中国轻工业专项能力</a>></p>
+                    <p><span>&gt;</span><a href="#">恭贺海明威2016-2017年度</a>></p>
+                    <p><span>&gt;</span><a href="#">2017海明威杯全国钓鱼预选赛</a>></p>
+                    <p><span>&gt;</span><a href="#">企业信用报告</a>></p>
+                    <p><span>&gt;</span><a href="#">海明威连锁加盟指南</a>></p>
+                    <p><span>&gt;</span><a href="#">海明威帮您搞定天津展</a>></p>
+                </div>
+                <div class="phone_div">
+                    <h3 class="fl">全国统一客服电话</h3>
+                    <a href="#" class="fr">更多&gt;</a>
+                </div>
+                <p class="phone_p">400-993-8686</p>
+            </div>
+        </div>
+    </div>
+    <!-- 网页一楼 -->
+    <div class="f_1box center">
+        <div class="f_1_left">
+            <img src="./images/1L.jpg" alt="">
+        </div>
+
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="goods_1f_list">
+            <li class="tejia"><img src="./images/tejia.jpg" alt=""></li>
+            <li><img src="  ./images/indexList/20170427094957955.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>竞技7+1硅胶材质</h5>
+                    <p><span>￥</span>15.00</p>
+                    <span>超高性价比 超硬 超大钓</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170502163433812.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>湖钓轮</h5>
+                    <p><span>￥</span>320.00</p>
+                    <span>无间隙3轴 金属线被 高性价比</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170505124623386.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>抄网招架 DFA-210支架</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170508170650475.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>迷你型夜钓灯</h5>
+                    <p><span>￥</span>78.00</p>
+                    <span>高性价比 时尚外观 款式齐全</span>
+                </div>
+            </li>
+            <li class="tejia"><img src="./images/tejia1.jpg" alt=""></li>
+            <li><img src="./images/indexList/20170512130201136.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>刀锋战士钓鱼箱</h5>
+                    <p><span>￥</span>118.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170607162906180.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>幻峰影钓鱼箱</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>高性价比 大容量 款式齐全</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170608152622558.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>遮阳扇</h5>
+                    <p><span>￥</span>58.00</p>
+                    <span>超大型号 抗紫外线</span>
+                </div>
+            </li>
+            <li><img src="./images/indexList/20170615130945427.jpg_300x300.jpg" alt="">
+                <div>
+                    <h5>海明威钓鱼防嗮服</h5>
+                    <p><span>￥</span>98.00</p>
+                    <span>轻盈透气 抗紫外线</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 网页底部 -->
+    <div class="footer">
+        <div class="footercontent center">
+            <ul>
+                <li class="fontBg1"><span>牌服务</span>三大保障</li>
+                <li class="fontBg2"><span>固安全</span>垂直渠道</li>
+                <li class="fontBg3"><span>量库存</span>随心采购</li>
+                <li class="fontBg4"><span>力雄厚</span>上市企业</li>
+            </ul>
+            <dl>
+                <dt>购物指南</dt>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">如何加入</a></dd>
+            </dl>
+            <dl>
+                <dt>如何付款</dt>
+                <dd><a href="#">微信支付</a></dd>
+                <dd><a href="#">中国银联</a></dd>
+                <dd><a href="#">支付宝</a></dd>
+            </dl>
+            <dl>
+                <dt>货物配送</dt>
+                <dd><a href="#">配送方式</a></dd>
+                <dd><a href="#">收费标准</a></dd>
+                <dd><a href="#">注意事项</a></dd>
+            </dl>
+            <dl>
+                <dt>售后服务</dt>
+                <dd><a href="#">售后维修</a></dd>
+                <dd><a href="#">退货说明</a></dd>
+                <dd><a href="#">联系方式</a></dd>
+            </dl>
+            <dl>
+                <dt>关于海明威</dt>
+                <dd><a href="#">商务合作</a></dd>
+                <dd><a href="#">连锁加盟</a></dd>
+                <dd><a href="#">法律声明</a></dd>
+            </dl>
+            <div class="erweiCode fr ">
+                <p>扫码加入</p>
+                <p>海明威买家平台</p>
+            </div>
+        </div>
+        <p class="footer_bottmo">Copyright &copy; 2015-2017 hmwdj.com All Rights Reserved. 威海市海明威集团股份有限公司 版权所有
+            鲁ICP备15012501号</p>
+    </div>
+</body>
+<script>
+    var contentList = document.querySelectorAll("#content li");
+    var navList = document.querySelectorAll("#nav li");
+    var selectedLeft = document.getElementById("#selected_left");
+    var selectedRight = document.getElementById("#selected_right");
+    var index = 0;
+    var maxIndex = contentList.length;
+    var timer = null;
+    showBanner();
+
+    function showBanner() {
+        timer = setInterval(function () {
+            index++;
+            if (index == maxIndex) {
+                index = 0;
+            }
+            for (var i = 0; i < contentList.length; i++) {
+                contentList[i].className = "";
+                navList[i].className = "";
+            }
+            contentList[index].className = "selected";
+            navList[index].className = "selected";
+        }, 3000);
+    }
+    for (let i = 0; i < navList.length; i++) {
+        var li = navList[i];
+        li.onmouseover = function () {
+            for (var j = 0; j < navList.length; j++) {
+                navList[j].className = "";
+                contentList[j].className = "";
+            }
+            navList[i].className = "selected";
+            contentList[i].className = "selected";
+            clearInterval(timer);
+        }
+        li.onmouseout = function () {
+            showBanner();
+        }
+    }
+
+    // selectedLeft.onclick = function () {
+    //     clearInterval(timer)
+    //     index--;
+    //     if (index < 0) {
+    //         index = maxIndex;
+    //     }
+    // }
+    // selectedRight.onclick = function () {
+    //     clearInterval(timer)
+    //     showBanner()
+    // }
+</script>
+
+</html>
