@@ -257,7 +257,8 @@
     border-right: 17px solid #fff;
     overflow: hidden;
 }
-.f_1box .goods_1f_list li:hover img{
+
+.f_1box .goods_1f_list li:hover img {
     width: 260px;
     height: 302px;
 }
@@ -278,14 +279,18 @@
     width: 240px;
     height: 230px;
     cursor: pointer;
+    transition: .3s;
 }
-.goods_1f_list p{
+
+.goods_1f_list p {
     color: #f60;
     font-weight: bold;
 }
-.goods_1f_list span:nth-child(1){
-    color:#f60;
+
+.goods_1f_list span:nth-child(1) {
+    color: #f60;
 }
-.goods_1f_list span{
-    color:#2ba0de
+
+.goods_1f_list span {
+    color: #2ba0de
 }

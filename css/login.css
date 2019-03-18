@@ -2,9 +2,10 @@
 /* 登入注册 */
 .loginPage{
     width: 320px;
-    /* height: 400px; */
+    border-radius: 10px;
     margin: auto;
-    background-color: rgba(214, 204, 204, 0.13);
+    background-color: rgba(7, 0, 0, 0.301);
+    box-shadow: 5px 5px 5px 1px ;
     padding: 20px 50px;
     margin-top: 70px;
     position: absolute;

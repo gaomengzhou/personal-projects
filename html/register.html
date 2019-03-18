@@ -35,7 +35,7 @@
     </div>
     <div class="headerbottom center">
         <div class="logo fl">
-            <a href="#"><img src="../images/logo.png" alt=""></a>
+            <a href="../index.html"><img src="../images/logo.png" alt=""></a>
         </div>
         <div class="search fl">
             <input type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn">搜 索</button>
@@ -63,29 +63,40 @@
             <button id="register_btn">注册</button>
         </div>
     </div>
+    <!-- <script src="../javaScript/register.js"></script> -->
 </body>
 <script>
     $("#register_btn").click(function () {
         nameRegFn();
         pwdRegFn();
         telRegFn();
+        var username = $("#username").val();
+        var userpwd = $("#userpwd1").val();
+        var usertel = $("#usertel").val();
         if (nameRegFn() && pwdRegFn() && telRegFn()) {
-            if (xxxxx) {
-                //加入阿贾克斯,看数据库有没有,obj=多少;不存在就else
-                //存在就返回backUlr的cookie
-            } else {
-                setCookie("username_" + $("#username").val(), $("#username"), 7);
-                window.location.href = "login.html";
-            }
+            $.ajax({
+                type: "get",
+                url: "../php/register.php",
+                data: {
+                    username: username,
+                    userpwd: userpwd,
+                    usertel: usertel
+                },
+                dataType: "json",
+                success: function (obj) {
+                    if (obj["code"] == 1) {
+                        // setCookie("username_" + $("#username").val(), $("#username").val(), 7);
+                        window.location.href = "./login.html";
+                    } else {
+                        alert(obj["msg"]);
+                    }
+                }
+            });
         } else {
             alert("注册失败,请看提示!");
         }
 
     });
-
-
-
-
 
     function nameRegFn() {
         var nameReg = /^[a-z_$][a-z0-9_$]{2,9}$/ig;

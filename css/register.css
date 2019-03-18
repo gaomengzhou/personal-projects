@@ -1,25 +1,33 @@
 @charset "utf-8";
-.register{
-    width: 410px;
-    padding: 10px
+
+.register {
+    width: 450px;
+    padding: 40px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    margin-top: 50px;
 }
-.register h3{
+
+.register h3 {
     font-size: 20px;
     text-align: center;
 }
-.register p{
+
+.register p {
     width: 100px;
     height: 30px;
-   display: inline-block;
-   font-size: 16px;
-   margin-top: 20px;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
 }
-.register input{
+
+.register input {
     width: 280px;
     height: 30px;
     padding: 5px;
 }
-.register button{
+
+.register button {
     width: 400px;
     height: 40px;
     margin-top: 20px;

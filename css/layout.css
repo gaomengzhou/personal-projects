@@ -6,6 +6,7 @@
     height: 30px;
     background-color: #eee;
     position: fixed;
+    z-index: 9999;
     top: 0;
     left: 0;
 }
@@ -25,6 +26,10 @@
     text-align: center;
     border-right: 1px solid #c6c6c6;
 }
+
+/* .nav ul li.dleCookie {
+    display: none;
+} */
 
 .nav ul li.borderNone {
     border: none;
