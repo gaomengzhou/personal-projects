@@ -8,6 +8,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/Reset.css">
     <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/details.css">
+    <script src="../javaScript/jquery-1.11.3.js"></script>
+    <script src="../javaScript/cookie.js"></script>
 </head>
 
 <body>
@@ -20,7 +23,8 @@
                 <li class="borderNone"><a href="#">优惠专区</a></li>
             </ul>
             <ul class="right fr">
-                <li><a href="#">登入</a></li>
+                <li><a id="showname" href="#">登入</a></li>
+                <li id="dleCookie" class="dleCookie"><a href="#">退出</a></li>
                 <li><a href="#">买家中心</a></li>
                 <li><a href="#">联系我们</a></li>
                 <li><a href="#">企业简介</a></li>
@@ -45,13 +49,255 @@
             </p>
         </div>
         <div class="login fr">
-            <p class="fl"><span class="login_span"></span>买家登入</p>
-            <p class="fl"><span class="register_span"></span>申请注册</p>
+            <p id="login_P" class="fl"><span class="login_span"></span>买家登入</p>
+            <p id="register_P" class="fl"><span class="register_span"></span>申请注册</p>
         </div>
     </div>
 
+    <div id="box">
+        <div class="boxleft fl">
+            <div id="top">
+                <img id="smallImg" draggable="false" src="" alt="">
+                <div id="shadow"></div>
+            </div>
+            <div id="bigDiv">
+                <img id="bigImg" src="" alt="">
+            </div>
+            <ul id="nav">
+                <!-- <li data_id="../images/indexList/1.jpg" bigimg_id="../images/indexList/1.jpg"><img draggable="false"
+                        src="../images/indexList/1.jpg" alt=""></li>
+                <li data_id="../images/indexList/2.jpg" bigimg_id="../images/indexList/2.jpg"><img draggable="false"
+                        src="../images/indexList/2.jpg" alt=""></li>
+                <li data_id="../images/indexList/3.jpg" bigimg_id="../images/indexList/3.jpg"><img draggable="false"
+                        src="../images/indexList/3.jpg" alt=""></li>
+                <li data_id="../images/indexList/4.jpg" bigimg_id="../images/indexList/4.jpg"><img draggable="false"
+                        src="../images/indexList/4.jpg" alt=""></li> -->
+            </ul>
+        </div>
+        <div class="detailsDiv fr">
+            <div class="goodsTitle">
+                <h3 id="goodsname_h3" class="fl"> </h3>
+                <p class="fr">上市时间 : <span>2015-9-21</span></p>
+            </div>
+            <div class="detalsprice">
+                <p class="detalsprice_P fl">零售价: <span id="price_span"> </span></p>
+                <p class="fr detalsprice_P_r">库存量 <span id="goodsnum_span"> </span></p>
+            </div>
+            <div class="styles">
+                <span class="style_span">型号</span>
+                <ul class="style_ul" id="style_ul">
+                    <li class="selected_li">
+                        <p>型号一</p>
+                        <i class="selected_i"></i>
+                    </li>
+                    <li>
+                        <p>型号二</p>
+                        <i></i>
+                    </li>
+                    <li>
+                        <p>型号三</p>
+                        <i></i>
+                    </li>
+                </ul>
+            </div>
+            <span class="shoppingnum">数量</span>
+            <div class="goodsNum">
+                <button id="reduce_btn">-</button>
+                <input value="1" class="goodsNum_input" id="goodsNum" type="text">
+                <button id="add_btn">+</button>
+            </div>
+            <div class="buythecar">
+                <button class="buy_btn" id="buy_btn">立即购买</button>
+                <button class="shopingCar_btn" id="shopingCar_btn">加入购物车</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </div>
+<script>
+    var smallImg = document.getElementById("smallImg");
+    var bigImg = document.getElementById("bigImg");
+    var bigImgWidth = parseInt(getAttribute(bigImg, "width"));
+    var bigImgHeight = parseInt(getAttribute(bigImg, "height"));
+
+    var bigDiv = document.getElementById("bigDiv");
+
+    var bigDivWidth = parseInt(getAttribute(bigDiv, "width"));
+    var bigDivHeight = parseInt(getAttribute(bigDiv, "height"));
+
+    var topDiv = document.getElementById("top");
+    var shadow = document.getElementById("shadow");
+
+    var topDivWidth = parseInt(getAttribute(topDiv, "width"));
+    var topDivHeight = parseInt(getAttribute(topDiv, "height"));
+    var shadowWidth = parseInt(getAttribute(shadow, "width"));
+    var shadowHeight = parseInt(getAttribute(shadow, "height"));
+
+    var maxWidth = topDivWidth - shadowWidth;
+    var maxHeight = topDivHeight - shadowHeight;
+
+    var boxleft = document.getElementById("box");
+    var boxLift = boxleft.offsetLeft;
+    var boxTop = boxleft.offsetTop;
+
+    $.ajax({
+        type: "get",
+        url: "../php/goodsdetails.php",
+        dataType: "json",
+        success: function (list) {
+            var searchStr = window.location.search;
+            if (searchStr.indexOf("id") != 1) {
+                var pageId = searchStr.split("=")[1];
+                for (var i = 0; i < list.length; i++) {
+                    var {
+                        id,
+                        goodsname,
+                        goodsimg,
+                        goodsnum,
+                        goodsprice,
+                        goodstitle,
+                        goodsnavimg
+                    } = list[i];
+                    if (id == pageId) {
+
+                        var html = "";
+                        $("#price_span").html("￥" + goodsprice);
+                        $("#goodsname_h3").html(goodsname);
+                        $("#goodsnum_span").html(goodsnum);
+                        smallImg.src = "." + goodsnavimg + 1 + ".jpg";
+                        bigImg.src = "." + goodsnavimg + 1 + ".jpg";
+                        for (let j = 1; j <= 4; j++) {
+                            html +=
+                                `
+                                    <li data_id=".${goodsnavimg}${[j]}.jpg" bigimg_id=".${goodsnavimg}${[j]}.jpg"><img draggable="false"
+                                    src=".${goodsnavimg}${[j]}.jpg" alt=""></li>
+                                `
+                        }
+                    }
+                }
+                $("#nav").html(html);
+                var navList = document.querySelectorAll("#nav li");
+                for (var k = 0; k < navList.length; k++) {
+                    var li = navList[k];
+                    li.onmousemove = function () {
+                        // var smallImgSrc = this.getAttribute("data_id");
+                        // var bigImgSrc = this.getAttribute("bigimg_id");
+                        smallImg.src = this.getAttribute("data_id");
+                        bigImg.src = this.getAttribute("bigimg_id");
+                    }
+                }
+            }
+        }
+    });
+
+    topDiv.onmousemove = function (e) {
+        var evt = window.event || e;
+        var pageX = evt.pageX;
+        var pageY = evt.pageY;
+        var x = pageX - boxLift - shadowWidth / 2;
+        var y = pageY - boxTop - shadowHeight / 2;
+        if (x <= 0) {
+            x = 0;
+        }
+        if (x >= maxWidth) {
+            x = maxWidth;
+        }
+        if (y <= 0) {
+            y = 0;
+        }
+        if (y >= maxHeight) {
+            y = maxHeight;
+        }
+        var bigY = -y * (bigImg.offsetHeight / smallImg.offsetHeight);
+        var bigX = -x * (bigImg.offsetHeight / smallImg.offsetWidth);
+        shadow.style.display = "block";
+        bigDiv.style.display = "block";
+        shadow.style.top = y + "px";
+        shadow.style.left = x + "px";
+        bigImg.style.left = bigX + "px";
+        bigImg.style.top = bigY + "px";
+    }
+    topDiv.onmouseout = function () {
+        shadow.style.display = "none";
+        bigDiv.style.display = "none";
+    }
+
+    var liLIst = document.querySelectorAll("#style_ul li");
+    var iList = document.querySelectorAll("#style_ul li i");
+    for (let i = 0; i < liLIst.length; i++) {
+        var li = liLIst[i];
+        li.onclick = function () {
+            for (var j = 0; j < liLIst.length; j++) {
+                liLIst[j].className = "";
+                iList[j].className = "";
+            }
+            liLIst[i].className = "selected_li";
+            iList[i].className = "selected_i";
+        }
+    }
+
+
+    function getAttribute(obj, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(obj)[attr];
+        } else {
+            return obj.currentStyle[attr];
+        }
+    }
+
+    var loginName = getCookie("loginName");
+    if (loginName) {
+        $("#showname").html(loginName);
+        $("#dleCookie").show();
+        $("#login_P").hide();
+        $("#register_P").hide();
+    } else {
+        $("#dleCookie").hide();
+        $("#showname").click(function () {
+            window.location.href = "./login.html"
+        });
+    }
+    $("#dleCookie").click(function () {
+        setCookie("loginName", "", -1);
+        setCookie("loginId", "", -1);
+        $("#dleCookie").hide();
+        window.location.reload();
+    });
+
+    $("#login_P").click(function () {
+        window.location.href = "./login.html";
+    });
+    $("#register_P").click(function () {
+        window.location.href = "./register.html";
+    });
+
+    var index = 1;
+    $("#add_btn").click(function () {
+        index++;
+        $("#goodsNum").val(index);
+    });
+
+
+    $("#buy_btn").click(function () {
+        if (loginName) {
+            window.location.href = "./shoppingcar.html"
+        } else {
+            setCookie("url", window.location.search, 7);
+            window.location.href = "./login.html";
+        }
+    });
+
+    $("#shopingCar_btn").click(function () {
+        if (loginName) {
+            if (confirm("加入成功,是否立即结算?")) {
+                window.location.href = "./shoppingcar.html";
+            }
+        } else {
+            setCookie("url", window.location.search, 7);
+            window.location.href = "./login.html";
+        }
+    });
+</script>
 
 </html>

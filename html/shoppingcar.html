@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/shoppingcar.css">
+    <script src="../javaScript/jquery-1.11.3.js"></script>
+    <script src="../javaScript/cookie.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav center">
+            <ul class="left fl">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="#">特接新品</a></li>
+                <li><a href="#">热卖商品</a></li>
+                <li class="borderNone"><a href="#">优惠专区</a></li>
+            </ul>
+            <ul class="right fr">
+                <li><a id="showname" href="#">登入</a></li>
+                <li id="dleCookie" class="dleCookie"><a href="#">退出</a></li>
+                <li><a href="#">买家中心</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="#">企业简介</a></li>
+                <li class="borderNone"><a href="#">帮助中心</a></li>
+            </ul>
+            <!-- logo input login -->
+
+        </div>
+    </div>
+    <div class="headerbottom center">
+        <div class="logo fl">
+            <a href="index.html"><img src="./images/logo.png" alt=""></a>
+        </div>
+        <div class="search fl">
+            <input id="search_input" type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn"
+                id="search_btn">搜
+                索</button>
+            <p>热门搜索 ：<a href="#">刀锋战士</a>
+                <a href="#">钓箱</a>
+                <a href="#">线</a>
+                <a href="#">轮</a>
+                <a href="#">太空豆</a>
+                <a href="#">路亚竿</a>
+            </p>
+        </div>
+        <div class="login fr">
+            <p id="login_P" class="fl"><span class="login_span"></span>买家登入</p>
+            <p id="register_P" class="fl"><span class="register_span"></span>申请注册</p>
+        </div>
+    </div>
+    <!-- 购物车 -->
+    <div class="shoppingcar center">
+        <h3 class="car_h3">我的购物车</h3>
+        <span>全选</span><input type="checkbox" name="check_all" id="checkAll" class="checkAll">
+        <ul class="shopList" id="shopList">
+            <li>
+                <div class="check_oneDiv fl">
+                    <input type="checkbox" name="check_one" class="checkOne">
+                </div>
+                <div class="goodsimg_div fl">
+                    <img src="../images/20190125160310126.jpg" alt="">
+                </div>
+                <div class="goods_name_div fl">
+                    <a class="goods_name_a" href="#">没什么事没什么的鱼竿</a>
+                </div>
+                <span class="goodsprice_span">￥150</span>
+                <button class="reduce" id="reduce">-</button>
+                <input type="text" class="goods_num">
+                <button class="addNum">+</button>
+                <span class="totalprice" id="totalprice">总价:￥599</span>
+                <span class="delete" id="delete">删除</span>
+            </li>
+        </ul>
+        <div class="shop_footer">
+            <button class="fr settlement_btn" id="settlement_btn">结算</button>
+            <p class="fr">合剂:<span>0.00</span></p>
+            <p class="fr">已选商品<span>0</span>件</p>
+        </div>
+    </div>
+</body>
+<script>
+    var loginName = getCookie("loginName");
+    if (loginName) {
+        $("#showname").html(loginName);
+        $("#dleCookie").show();
+        $("#login_P").hide();
+        $("#register_P").hide();
+    } else {
+        $("#dleCookie").hide();
+        $("#showname").click(function () {
+            window.location.href = "./html/login.html"
+        });
+    }
+    $("#dleCookie").click(function () {
+        setCookie("loginName", "", -1);
+        setCookie("loginId", "", -1);
+        $("#dleCookie").hide();
+        window.location.reload();
+    });
+
+    $("#login_P").click(function () {
+        window.location.href = "./html/login.html"
+    });
+    $("#register_P").click(function () {
+        window.location.href = "./html/register.html"
+    });
+</script>
+
+</html>

@@ -39,7 +39,8 @@
             <a href="index.html"><img src="./images/logo.png" alt=""></a>
         </div>
         <div class="search fl">
-            <input id="search_btn" type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn">搜
+            <input id="search_input" type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn"
+                id="search_btn">搜
                 索</button>
             <p>热门搜索 ：<a href="#">刀锋战士</a>
                 <a href="#">钓箱</a>
@@ -226,6 +227,13 @@
         <div class="f_1_left">
             <img src="./images/1L.jpg" alt="">
         </div>
+
+        <select name="" id="paixu">
+            <option value="1">默认排序</option>
+            <option value="2">价格由高到低</option>
+            <option value="3">价格由低到高</option>
+        </select>
+
         <ul class="goods_1f_list" id="goods_1f_list">
             <!-- <li><img src="./images/indexList/1.jpg" alt="">
                 <div>
@@ -336,24 +344,61 @@
     //     clearInterval(timer)
     //     showBanner()
     // }
-    $.ajax({
-        type: "get",
-        url: "./php/goodslist.php",
-        dataType: "json",
-        success: function (list) {
-            var indexGoodsList = "";
-            for (i = 0; i < list.length; i++) {
-                var {
-                    id,
-                    goodsname,
-                    goodsimg,
-                    goodsnum,
-                    goodsprice,
-                    goodstitle
-                } = list[i];
-                indexGoodsList +=
-                    `
-               
+
+    var priceUp = "asc";
+    var priceDown = "desc";
+    var paixu = $("#paixu");
+    var sort = "";
+    var key = "";
+
+
+
+
+    $("#search_btn").click(function () {
+        key = $("#search_input").val()
+        getSort(sort, key);
+        console.log(key);
+    });
+
+
+    $("#paixu").change(function () {
+
+        if ($("#paixu").val() == "1") {
+            sort = "";
+        }
+        if ($("#paixu").val() == "2") {
+            sort = priceDown;
+        }
+        if ($("#paixu").val() == "3") {
+            sort = priceUp;
+        }
+        getSort(sort, key);
+    });
+    getSort(sort, key);
+
+    function getSort(sort, key) {
+        $.ajax({
+            type: "get",
+            url: "./php/goodslist.php",
+            data: {
+                sort: sort,
+                key: key
+            },
+            dataType: "json",
+            success: function (list) {
+                var indexGoodsList = "";
+                for (i = 0; i < list.length; i++) {
+                    var {
+                        id,
+                        goodsname,
+                        goodsimg,
+                        goodsnum,
+                        goodsprice,
+                        goodstitle
+                    } = list[i];
+
+                    indexGoodsList +=
+                        `
             <li id="${id}" data_id="${id}" class="creatLi"><img src="${goodsimg}" alt="">
                 <div>
                     <h5>${goodsname}</h5>
@@ -363,15 +408,20 @@
             </li>
         
                 `
+                }
+                $("#goods_1f_list").html(indexGoodsList);
+
+                $(".creatLi").click(function () {
+                    window.location.href = "./html/details.html?list-id=" + $(this).attr("id");
+                    // alert($(this).attr("id"));
+                });
             }
-            $("#goods_1f_list").append(indexGoodsList);
-            //进入详情页面.
-            $(".creatLi").click(function () {
-                window.location.href = "./html/details.html?list-id=" + $(this).attr("id");
-                // alert($(this).attr("id"));
-            });
-        }
-    });
+        });
+    }
+
+
+
+
 
 
 

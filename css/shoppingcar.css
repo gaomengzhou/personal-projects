@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+.shoppingcar {
+    width: 900px;
+    margin-top: 50px;
+}
+.shoppingcar h3{
+    margin-bottom: 20px;
+}
+.checkAll{
+    margin-left: 5px;
+}
+.shopList{
+    margin-top: 10px;
+}
+.shopList img {
+    width: 84px;
+    height: 84px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.shopList input {
+    vertical-align: auto
+}
+
+.shopList li {
+    width: 800px;
+    height: 100px;
+    border: 1px solid rgb(207, 205, 205);
+    padding-bottom: 2px;
+}
+.check_oneDiv{
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+.goods_num {
+    width: 20px;
+}
+
+.goods_name_a {
+    line-height: 100px;
+    color: rgb(47, 45, 49);
+    margin-left: 50px;
+}
+.goodsprice_span{
+    line-height: 100px;
+    margin-left: 100px;
+}
+.totalprice{
+    margin-left: 50px;
+}
+.reduce{
+    margin-left: 50px;
+}
+
+.delete{
+    margin-left: 100px;
+}
+.shop_footer{
+    width: 802px;
+    height: 30px;background-color: rgb(226, 222, 222);
+}
+
+.settlement_btn{
+width: 50px;
+height: 30px;
+border: 0;
+background-color: #f60;
+color: #fff;
+font-weight: bold;
+}
+.shop_footer p{
+    line-height: 30px;
+    margin-right: 15px;
+}

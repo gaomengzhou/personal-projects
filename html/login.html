@@ -83,16 +83,28 @@
             },
             dataType: "json",
             success: function (obj) {
+                var backUrl = getCookie("url");
                 if (obj["code"] == 1) {
                     if ($("#rememberPwd").prop("checked")) {
                         setCookie("loginName", username, 7);
                         setCookie("loginId", obj["id"], 7);
-                        window.location.href = "../index.html";
+                        if (backUrl) {
+                            window.location.href = window.location.href = "../html/details.html" +
+                                backUrl;
+                        } else {
+                            window.location.href = "../index.html";
+                        }
                     } else {
                         setCookie("loginName", username);
                         setCookie("loginId", obj["id"]);
-                        window.location.href = "../index.html";
+                        if (backUrl) {
+                            window.location.href = window.location.href = "../html/details.html" +
+                                backUrl;
+                        } else {
+                            window.location.href = "../index.html";
+                        }
                     }
+
                 } else {
                     alert(obj["msg"])
                 }
