@@ -36,7 +36,7 @@
     </div>
     <div class="headerbottom center">
         <div class="logo fl">
-            <a href="index.html"><img src="./images/logo.png" alt=""></a>
+            <a href="../index.html"><img src="../images/logo.png" alt=""></a>
         </div>
         <div class="search fl">
             <input id="search_input" type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn"
@@ -60,7 +60,7 @@
         <h3 class="car_h3">我的购物车</h3>
         <span>全选</span><input type="checkbox" name="check_all" id="checkAll" class="checkAll">
         <ul class="shopList" id="shopList">
-            <li>
+            <!-- <li>
                 <div class="check_oneDiv fl">
                     <input type="checkbox" name="check_one" class="checkOne">
                 </div>
@@ -72,20 +72,92 @@
                 </div>
                 <span class="goodsprice_span">￥150</span>
                 <button class="reduce" id="reduce">-</button>
-                <input type="text" class="goods_num">
+                <input type="text" class="goods_num" id="goods_num" value="1">
                 <button class="addNum">+</button>
                 <span class="totalprice" id="totalprice">总价:￥599</span>
                 <span class="delete" id="delete">删除</span>
-            </li>
+            </li> -->
         </ul>
         <div class="shop_footer">
             <button class="fr settlement_btn" id="settlement_btn">结算</button>
-            <p class="fr">合剂:<span>0.00</span></p>
+            <p class="fr">合计:<span>0.00</span></p>
             <p class="fr">已选商品<span>0</span>件</p>
         </div>
     </div>
 </body>
 <script>
+    var loginId = getCookie("loginId");
+    if (loginId) {
+        $.ajax({
+            type: "get",
+            url: "../php/shoppingcar.php",
+            data: {
+                userid: loginId
+            },
+            dataType: "json",
+            success: function (list) {
+                var html = "";
+                for (var i = 0; i < list.length; i++) {
+                    var {
+                        id,
+                        goodsid,
+                        goodsimg,
+                        goodsprice,
+                        goodsname,
+                        num
+                    } = list[i];
+                    html +=
+                        `
+                            <li>
+                                <div class="check_oneDiv fl">
+                                    <input type="checkbox" name="check_one" class="checkOne">
+                                </div>
+                                <div class="goodsimg_div fl">
+                                    <img src=".${goodsimg}" alt="">
+                                </div>
+                                <div class="goods_name_div fl">
+                                    <a class="goods_name_a" href="#">${goodsname}</a>
+                                </div>
+                                <span class="goodsprice_span">￥${goodsprice*1}</span>
+                                <div class="goodsAddAndReduce">
+                                <button class="reduce" id="reduce" onclick="">-</button>
+                                <input type="text" class="goods_num" id="goods_num" value="${num}">
+                                <button class="addNum" onclick="">+</button>
+                                </div>
+                                <span class="totalprice" id="totalprice">总价:￥${num*goodsprice}</span>
+                                <span class="delete" id="delete">删除</span>
+                           </li>
+                            `
+                }
+                $("#shopList").html(html);
+            }
+        });
+    }
+    var count = 0;
+    var maxCount = $(".checkOne").length;
+    $("#checkAll").click(function () {
+        if ($("#checkAll").prop("checked")) {
+            $(".checkOne").prop("checked", true);
+        } else {
+            $(".checkOne").prop("checked", false);
+        }
+        count = $(this).prop("checked") ? $(".checkOne").length : 0;
+    });
+
+    $("#shopList").on("click", ".checkOne", function () {
+        if ($(this).prop("checked")) {
+            count++;
+            // console.log(count)
+            if (count == $(".checkOne").length) {
+                $("#checkAll").prop("checked", true);
+            }
+
+        } else {
+            count--;
+            $("#checkAll").prop("checked", false);
+        }
+    });
+
     var loginName = getCookie("loginName");
     if (loginName) {
         $("#showname").html(loginName);
@@ -95,7 +167,7 @@
     } else {
         $("#dleCookie").hide();
         $("#showname").click(function () {
-            window.location.href = "./html/login.html"
+            window.location.href = "./login.html"
         });
     }
     $("#dleCookie").click(function () {
@@ -106,10 +178,10 @@
     });
 
     $("#login_P").click(function () {
-        window.location.href = "./html/login.html"
+        window.location.href = "./login.html"
     });
     $("#register_P").click(function () {
-        window.location.href = "./html/register.html"
+        window.location.href = "./register.html"
     });
 </script>
 

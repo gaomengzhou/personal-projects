@@ -5,6 +5,7 @@ $sort = $_GET["sort"];
 $key = $_GET["key"];
 
 $str = "select  *  from  goodslist  where type=1  and goodsname like '%$key%' order by goodsprice $sort";
+
 $result = mysql_query($str);
 $list = array();
 while($item = mysql_fetch_array($result)) {

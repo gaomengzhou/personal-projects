@@ -4,15 +4,19 @@
     width: 900px;
     margin-top: 50px;
 }
-.shoppingcar h3{
+
+.shoppingcar h3 {
     margin-bottom: 20px;
 }
-.checkAll{
+
+.checkAll {
     margin-left: 5px;
 }
-.shopList{
+
+.shopList {
     margin-top: 10px;
 }
+
 .shopList img {
     width: 84px;
     height: 84px;
@@ -30,12 +34,29 @@
     border: 1px solid rgb(207, 205, 205);
     padding-bottom: 2px;
 }
-.check_oneDiv{
+
+.check_oneDiv {
     margin-top: 40px;
     margin-right: 20px;
     margin-left: 5px;
 }
+
 .goods_num {
+    width: 20px;
+    text-align: center;
+}
+
+.goods_name_div {
+    width: 250px;
+}
+
+.goodsAddAndReduce {
+    margin-left: 15px;
+    float: left;
+    margin-top: 40px;
+}
+
+.goodsAddAndReduce button {
     width: 20px;
 }
 
@@ -44,34 +65,45 @@
     color: rgb(47, 45, 49);
     margin-left: 50px;
 }
-.goodsprice_span{
+
+.goodsprice_span {
+    float: left;
+    display: block;
+    width: 50px;
     line-height: 100px;
-    margin-left: 100px;
-}
-.totalprice{
-    margin-left: 50px;
-}
-.reduce{
-    margin-left: 50px;
 }
 
-.delete{
-    margin-left: 100px;
+.totalprice {
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px;
 }
-.shop_footer{
+
+
+
+.delete {
+    float: right;
+    margin-top: 40px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.shop_footer {
     width: 802px;
-    height: 30px;background-color: rgb(226, 222, 222);
+    height: 30px;
+    background-color: rgb(226, 222, 222);
 }
 
-.settlement_btn{
-width: 50px;
-height: 30px;
-border: 0;
-background-color: #f60;
-color: #fff;
-font-weight: bold;
+.settlement_btn {
+    width: 50px;
+    height: 30px;
+    border: 0;
+    background-color: #f60;
+    color: #fff;
+    font-weight: bold;
 }
-.shop_footer p{
+
+.shop_footer p {
     line-height: 30px;
     margin-right: 15px;
 }

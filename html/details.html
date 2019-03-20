@@ -147,6 +147,7 @@
         dataType: "json",
         success: function (list) {
             var searchStr = window.location.search;
+            var loginId = getCookie("loginId");
             if (searchStr.indexOf("id") != 1) {
                 var pageId = searchStr.split("=")[1];
                 for (var i = 0; i < list.length; i++) {
@@ -187,9 +188,64 @@
                         bigImg.src = this.getAttribute("bigimg_id");
                     }
                 }
+                $("#shopingCar_btn").click(function () {
+                    if (loginName) {
+                        $.ajax({
+                            type: "get",
+                            url: "../php/gotoshoppingcar.php",
+                            data: {
+                                userid: loginId,
+                                goodsid: pageId,
+                                num: $("#goodsNum").val()
+                            },
+                            dataType: "json",
+                            success: function (obj) {
+
+                                if (obj["code"] == 1) {
+                                    if (confirm("加入成功,是否立即结算.")) {
+                                        window.location.href = "./shoppingcar.html"
+                                    };
+                                } else {
+                                    alert(obj["msg"]);
+                                }
+                            }
+                        })
+                    } else {
+                        setCookie("url", window.location.search, 7);
+                        window.location.href = "./login.html";
+                    };
+                });
+                $("#buy_btn").click(function () {
+                    if (loginName) {
+                        $.ajax({
+                            type: "get",
+                            url: "../php/gotoshoppingcar.php",
+                            data: {
+                                userid: loginId,
+                                goodsid: pageId,
+                                num: $("#goodsNum").val()
+                            },
+                            dataType: "json",
+                            success: function (obj) {
+
+                                if (obj["code"] == 1) {
+                                    window.location.href = "./shoppingcar.html"
+                                } else {
+                                    alert(obj["msg"]);
+                                }
+                            }
+                        })
+                    } else {
+                        setCookie("url", window.location.search, 7);
+                        window.location.href = "./login.html";
+                    };
+                });
+
             }
         }
     });
+
+
 
     topDiv.onmousemove = function (e) {
         var evt = window.event || e;
@@ -277,27 +333,35 @@
         index++;
         $("#goodsNum").val(index);
     });
-
-
-    $("#buy_btn").click(function () {
-        if (loginName) {
-            window.location.href = "./shoppingcar.html"
-        } else {
-            setCookie("url", window.location.search, 7);
-            window.location.href = "./login.html";
+    $("#reduce_btn").click(function () {
+        index--;
+        if (index < 1) {
+            index = 1;
         }
+        $("#goodsNum").val(index);
+
     });
 
-    $("#shopingCar_btn").click(function () {
-        if (loginName) {
-            if (confirm("加入成功,是否立即结算?")) {
-                window.location.href = "./shoppingcar.html";
-            }
-        } else {
-            setCookie("url", window.location.search, 7);
-            window.location.href = "./login.html";
-        }
-    });
+
+    // $("#buy_btn").click(function () {
+    //     if (loginName) {
+    //         window.location.href = "./shoppingcar.html"
+    //     } else {
+    //         setCookie("url", window.location.search, 7);
+    //         window.location.href = "./login.html";
+    //     }
+    // });
+
+    // $("#shopingCar_btn").click(function () {
+    //     if (loginName) {
+    //         if (confirm("加入成功,是否立即结算?")) {
+    //             window.location.href = "./shoppingcar.html";
+    //         }
+    //     } else {
+    //         setCookie("url", window.location.search, 7);
+    //         window.location.href = "./login.html";
+    //     }
+    // });
 </script>
 
 </html>

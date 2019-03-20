@@ -249,19 +249,27 @@
 
 .f_1box .goods_1f_list li {
     width: 200px;
-    height: 302px;
+    height: 300px;
     float: left;
-    margin-top: 10px;
-    border-left: 17px solid #fff;
-    border-top: 10px solid #fff;
-    border-right: 17px solid #fff;
+    margin: 10px 17px 0 17px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
     overflow: hidden;
+    box-shadow: 1px 1px 1px 1px #c7c7c7 ,-1px -1px 1px 1px #c7c7c7 ;
+}
+
+.f_1box .goods_1f_list li:hover {
+    box-sizing: border-box;
+    border: 3px solid #2ba0de;
 }
 
 .f_1box .goods_1f_list li:hover img {
-    width: 260px;
-    height: 302px;
+    width: 280px;
+    height: 280px;
 }
+
+
 
 .f_1box .goods_1f_list li.tejia {
     border: 0;
@@ -280,6 +288,13 @@
     height: 230px;
     cursor: pointer;
     transition: .3s;
+}
+
+.f_1box .imgListDiv {
+    width: 240px;
+    height: 230px;
+    overflow: hidden;
+    position: relative;
 }
 
 .goods_1f_list p {
