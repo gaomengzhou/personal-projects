@@ -17,7 +17,7 @@
     <div class="header">
         <div class="nav center">
             <ul class="left fl">
-                <li><a href="#">首页</a></li>
+                <li><a href="../index.html">首页</a></li>
                 <li><a href="#">特接新品</a></li>
                 <li><a href="#">热卖商品</a></li>
                 <li class="borderNone"><a href="#">优惠专区</a></li>
@@ -25,6 +25,7 @@
             <ul class="right fr">
                 <li><a id="showname" href="#">登入</a></li>
                 <li id="dleCookie" class="dleCookie"><a href="#">退出</a></li>
+                <li id="spCar_li"><a id="spCar_a" href="#">购物车 <span id="spCar">0</span></a></li>
                 <li><a href="#">买家中心</a></li>
                 <li><a href="#">联系我们</a></li>
                 <li><a href="#">企业简介</a></li>
@@ -202,15 +203,23 @@
                             success: function (obj) {
 
                                 if (obj["code"] == 1) {
-                                    if (confirm("加入成功,是否立即结算.")) {
-                                        window.location.href =
-                                            "./shoppingcar.html";
-                                    };
+                                    // if (confirm("加入成功,是否立即结算.")) {
+                                    //     window.location.href =
+                                    //         "./shoppingcar.html";
+                                    // };
                                 } else {
                                     alert(obj["msg"]);
                                 }
                             }
-                        })
+                        });
+                        $.ajax({
+                            type: "get",
+                            url: "../php/searchSpCar.php",
+                            dataType: "json",
+                            success: function (CarNum) {
+                                $("#spCar").html(CarNum * 1);
+                            }
+                        });
                     } else {
                         setCookie("url", window.location.search, 7);
                         window.location.href = "./login.html";
@@ -310,10 +319,25 @@
         $("#dleCookie").show();
         $("#login_P").hide();
         $("#register_P").hide();
+        $.ajax({
+            type: "get",
+            url: "../php/searchSpCar.php",
+            dataType: "json",
+            success: function (CarNum) {
+                $("#spCar").html(CarNum * 1);
+            }
+        });
+        $("#spCar_li").click(function () {
+            window.location.href = "./shoppingcar.html"
+        });
     } else {
         $("#dleCookie").hide();
         $("#showname").click(function () {
             window.location.href = "./login.html"
+        });
+        $("#spCar").hide();
+        $("#spCar_li").click(function () {
+            window.location.href = "./login.html";
         });
     }
     $("#dleCookie").click(function () {

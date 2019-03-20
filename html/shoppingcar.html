@@ -25,6 +25,7 @@
             <ul class="right fr">
                 <li><a id="showname" href="#">登入</a></li>
                 <li id="dleCookie" class="dleCookie"><a href="#">退出</a></li>
+                <li id="spCar_li"><a id="spCar_a" href="#">购物车 <span id="spCar">0</span></a></li>
                 <li><a href="#">买家中心</a></li>
                 <li><a href="#">联系我们</a></li>
                 <li><a href="#">企业简介</a></li>
@@ -190,14 +191,6 @@
     }
 
 
-
-
-
-
-
-
-
-
     $("#checkAll").click(function () {
         count = $(this).prop("checked") ? $(".checkOne").length : 0;
         if ($("#checkAll").prop("checked")) {
@@ -254,10 +247,10 @@
 
 
     $("#settlement_btn").click(function () {
-        if ($(".checkOne").prop("checked", false)) {
-            alert("至少选择一件商品来结算");
+        if ($("input[type='checkbox']").is(':checked')) {
+            alert("123");
         } else {
-            alert("123")
+            alert("至少选择一件商品来结算")
         }
     });
 
@@ -272,10 +265,25 @@
         $("#dleCookie").show();
         $("#login_P").hide();
         $("#register_P").hide();
+        $.ajax({
+            type: "get",
+            url: "../php/searchSpCar.php",
+            dataType: "json",
+            success: function (CarNum) {
+                $("#spCar").html(CarNum * 1);
+            }
+        });
+        $("#spCar_li").click(function(){
+            window.location.href="./shoppingcar.html"
+        });
     } else {
         $("#dleCookie").hide();
         $("#showname").click(function () {
             window.location.href = "./login.html"
+        });
+        $("#spCar").hide();
+        $("#spCar_li").click(function(){
+            window.location.href="./login.html";
         });
     }
     $("#dleCookie").click(function () {
