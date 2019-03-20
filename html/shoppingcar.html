@@ -80,13 +80,20 @@
         </ul>
         <div class="shop_footer">
             <button class="fr settlement_btn" id="settlement_btn">结算</button>
-            <p class="fr">合计:<span>0.00</span></p>
-            <p class="fr">已选商品<span>0</span>件</p>
+            <p class="fr">合计:<span id="total">0.00</span>元</p>
+            <p class="fr">已选商品<span id="selectgoods">0</span>件</p>
         </div>
     </div>
 </body>
 <script>
+    var searchStr = window.location.search;
+    var count = 0;
+    var maxCount = $(".checkOne").length;
+    var html = 0;
+    var totalHtml = 0;
+    var addhtml = 0;
     var loginId = getCookie("loginId");
+
     if (loginId) {
         $.ajax({
             type: "get",
@@ -108,7 +115,7 @@
                     } = list[i];
                     html +=
                         `
-                            <li>
+                            <li class="goodsLi" data_goodsid="${goodsid}">
                                 <div class="check_oneDiv fl">
                                     <input type="checkbox" name="check_one" class="checkOne">
                                 </div>
@@ -118,31 +125,89 @@
                                 <div class="goods_name_div fl">
                                     <a class="goods_name_a" href="#">${goodsname}</a>
                                 </div>
-                                <span class="goodsprice_span">￥${goodsprice*1}</span>
+                                <span class="moneys">￥</span><span class="goodsprice_span">${goodsprice*1}</span>
                                 <div class="goodsAddAndReduce">
-                                <button class="reduce" id="reduce" onclick="">-</button>
+                                <button class="reduce" id="reduce" onclick="reduceNumFn('${id}',this)">-</button>
                                 <input type="text" class="goods_num" id="goods_num" value="${num}">
-                                <button class="addNum" onclick="">+</button>
+                                <button class="addNum" onclick="addNumFn('${id}',this)">+</button>
                                 </div>
-                                <span class="totalprice" id="totalprice">总价:￥${num*goodsprice}</span>
-                                <span class="delete" id="delete">删除</span>
+                                <span class="totLogo">总价:￥</span><span class="totalprice" id="totalprice">${num*goodsprice}</span>
+                                <span class="delete" id="delete" onclick="deleteFn('${id}',this)">删除</span>
                            </li>
                             `
                 }
                 $("#shopList").html(html);
+
+
+
             }
         });
     }
-    var count = 0;
-    var maxCount = $(".checkOne").length;
+    $.ajax({
+        type: "get",
+        url: "../php/gotoshoppingcar.php",
+        data: {
+            userid: loginId,
+            goodsid: $(".goodsLi").attr("goodsLi"),
+            num: $(".goods_num").val()
+        },
+        dataType: "json",
+        success: function (obj) {
+            if (obj["code"] == 1) {
+
+            }
+
+
+
+        }
+    });
+
+    function addNumFn(id, that) {
+        $(that).prev().val($(that).prev().val() * 1 + 1);
+        if ($(that).parent().prev().prev().prev().prev().prev().children(".checkOne").prop("checked")) {
+            $("#selectgoods").html(0 + $(that).prev().val() *
+                1);
+            $("#total").html($(that).prev().val() *
+                1 * $(that).parent().prev().html());
+
+        }
+
+
+    }
+
+
+
+    function reduceNumFn(id, that) {
+        $(that).next().val($(that).next().val() - 1);
+        if ($(that).next().val() < 1) {
+            $(that).next().val(0);
+        }
+        if ($(that).parent().prev().prev().prev().prev().prev().children(".checkOne").prop("checked")) {
+            $("#selectgoods").html($(that).next().val() - 0);
+            $("#total").html($(that).next().val() * $(that).parent().prev().html());
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
     $("#checkAll").click(function () {
+        count = $(this).prop("checked") ? $(".checkOne").length : 0;
         if ($("#checkAll").prop("checked")) {
             $(".checkOne").prop("checked", true);
         } else {
             $(".checkOne").prop("checked", false);
         }
-        count = $(this).prop("checked") ? $(".checkOne").length : 0;
     });
+
+
 
     $("#shopList").on("click", ".checkOne", function () {
         if ($(this).prop("checked")) {
@@ -151,12 +216,55 @@
             if (count == $(".checkOne").length) {
                 $("#checkAll").prop("checked", true);
             }
+            $("#selectgoods").html(html += $(this).parent().next().next().next().next().next().children(
+                    ".goods_num").val() *
+                1);
+            $("#total").html(totalHtml += $(this).parent().next().next().next().next().next().children(
+                    ".goods_num").val() *
+                1 * $(this).parent().next().next().next().next().html());
 
         } else {
             count--;
             $("#checkAll").prop("checked", false);
+            $("#selectgoods").html(html -= $(this).parent().next().next().next().next().next().children(
+                    ".goods_num").val() *
+                1);
+            $("#total").html(totalHtml -= $(this).parent().next().next().next().next().next().children(
+                    ".goods_num").val() *
+                1 * $(this).parent().next().next().next().next().html());
         }
     });
+
+    function deleteFn(id, that) {
+        $.ajax({
+            type: "get",
+            url: "../php/delCar.php",
+            data: {
+                userid: loginId,
+                goodsid: $(that).parent().attr("data_goodsid"),
+            },
+            dataType: "json",
+            success: function (obj) {
+                $(that).parent().remove();
+            }
+        });
+
+    }
+
+
+
+    $("#settlement_btn").click(function () {
+        if ($(".checkOne").prop("checked", false)) {
+            alert("至少选择一件商品来结算");
+        } else {
+            alert("123")
+        }
+    });
+
+
+
+
+
 
     var loginName = getCookie("loginName");
     if (loginName) {

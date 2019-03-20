@@ -65,7 +65,10 @@
     color: rgb(47, 45, 49);
     margin-left: 50px;
 }
-
+.moneys{
+    float: left;
+    margin-top: 42px;
+}
 .goodsprice_span {
     float: left;
     display: block;
@@ -75,11 +78,14 @@
 
 .totalprice {
     float: left;
-    margin-left: 40px;
     margin-top: 40px;
 }
 
-
+.totLogo {
+    float: left;
+    margin-top: 40px;
+   margin-left: 40px;
+}
 
 .delete {
     float: right;
