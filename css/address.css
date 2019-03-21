@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.address{
+    width: 800px;
+    margin-top: 50px;
+    border: 1px solid #000;
+}
+
+
+
+
+
+
+
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}

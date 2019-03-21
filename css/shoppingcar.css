@@ -65,10 +65,12 @@
     color: rgb(47, 45, 49);
     margin-left: 50px;
 }
-.moneys{
+
+.moneys {
     float: left;
     margin-top: 42px;
 }
+
 .goodsprice_span {
     float: left;
     display: block;
@@ -84,7 +86,7 @@
 .totLogo {
     float: left;
     margin-top: 40px;
-   margin-left: 40px;
+    margin-left: 40px;
 }
 
 .delete {
@@ -113,3 +115,9 @@
     line-height: 30px;
     margin-right: 15px;
 }
+
+/* .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} */

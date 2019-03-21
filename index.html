@@ -190,7 +190,7 @@
                     <li><img src="./images/lunbo5.jpg" alt=""></li>
                 </ul>
                 <!-- <span class="selected_left" id="selected_left"></span>
-                <span class="selected_right" id="selected_right"></span> -->
+                                    <span class="selected_right" id="selected_right"></span> -->
                 <ul class="nav" id="nav">
                     <li class="selected"></li>
                     <li></li>
@@ -237,13 +237,17 @@
 
         <ul class="goods_1f_list" id="goods_1f_list">
             <!-- <li><img src="./images/indexList/1.jpg" alt="">
-                <div>
-                    <h5>竞技7+1硅胶材质</h5>
-                    <p><span>￥</span>15.00</p>
-                    <span>超高性价比 超硬 超大钓</span>
-                </div>
-            </li> -->
+                                    <div>
+                                        <h5>竞技7+1硅胶材质</h5>
+                                        <p><span>￥</span>15.00</p>
+                                        <span>超高性价比 超硬 超大钓</span>
+                                    </div>
+                                </li> -->
         </ul>
+    </div>
+    <div class="changePage">
+        <span class="fl" id="prevPageA" href="">上一页</span>
+        <span class="fr" id="nextPageA" href="">下一页</span>
     </div>
     <!-- 网页底部 -->
     <div class="footer">
@@ -292,6 +296,25 @@
         <p class="footer_bottmo">Copyright &copy; 2015-2017 hmwdj.com All Rights Reserved. 威海市海明威集团股份有限公司 版权所有
             鲁ICP备15012501号</p>
     </div>
+    <!-- 小广告 -->
+    <div class="adbox" id="Adbox">
+        <p>还有<span id="Adspan"></span>秒自动关闭</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <pre>流氓广告倒计时</pre>
+        <button id="closeBtn" class="close_Btn">关闭</button>
+    </div>
+    <audio id="AUD" class="musec" src="./mus/the pop group - Eyes of the Tiger (Rocky IV).mp3" controls="controls">
+    </audio>
+
+    <div id="ship" class="shipin">
+        <button id="closVideoBtn">删除元素</button><br>
+        <video id="video1" width="350" height="200" src="./vio/fish.mp4" controls="controls"
+            autoplay="autoplay"></video>
+    </div>
+
     <script src="./javaScript/index.js"></script>
 </body>
 <script>
@@ -333,31 +356,17 @@
             showBanner();
         }
     }
-
-    // selectedLeft.onclick = function () {
-    //     clearInterval(timer)
-    //     index--;
-    //     if (index < 0) {
-    //         index = maxIndex;
-    //     }
-    // }
-    // selectedRight.onclick = function () {
-    //     clearInterval(timer)
-    //     showBanner()
-    // }
-
-    var priceUp = "asc";
+    var priceUp = "ASC";
     var priceDown = "desc";
     var paixu = $("#paixu");
     var sort = "";
     var key = "";
-
-
-
+    var prevPage = 0;
+    var nextPage = 70;
 
     $("#search_btn").click(function () {
         key = $("#search_input").val()
-        getSort(sort, key);
+        getSort(sort, key, prevPage, nextPage);
         console.log(key);
     });
 
@@ -373,17 +382,19 @@
         if ($("#paixu").val() == "3") {
             sort = priceUp;
         }
-        getSort(sort, key);
+        getSort(sort, key, prevPage, nextPage);
     });
-    getSort(sort, key);
+    getSort(sort, key, prevPage, nextPage);
 
-    function getSort(sort, key) {
+    function getSort(sort, key, prevPage, nextPage) {
         $.ajax({
             type: "get",
             url: "./php/goodslist.php",
             data: {
                 sort: sort,
-                key: key
+                key: key,
+                prevPage: prevPage,
+                nextPage: nextPage
             },
             dataType: "json",
             success: function (list) {
@@ -400,19 +411,19 @@
 
                     indexGoodsList +=
                         `
-                        
-            <li id="${id}" data_id="${id}" class="creatLi">
-                <div class="imgListDiv">
-                  <img src="${goodsimg}" alt="">
-                </div>
-                <div>
-                    <h5>${goodsname}</h5>
-                    <p><span>￥</span>${goodsprice}</p>
-                    <span>${goodstitle}</span>
-                </div>
-            </li>
-        
-                `
+                    
+                    <li id="${id}" data_id="${id}" class="creatLi">
+                        <div class="imgListDiv">
+                            <img src="${goodsimg}" alt="">
+                            </div>
+                            <div>
+                                <h5>${goodsname}</h5>
+                                <p><span>￥</span>${goodsprice}</p>
+                                <span>${goodstitle}</span>
+                                </div>
+                                </li>
+                                
+                                `
                 }
                 $("#goods_1f_list").html(indexGoodsList);
 
@@ -420,15 +431,63 @@
                     window.location.href = "./html/details.html?list-id=" + $(this).attr("id");
                     // alert($(this).attr("id"));
                 });
+                $.ajax({
+                    type: "get",
+                    url: "./php/goodsListPage.php",
+                    dataType: "json",
+                    success: function (page) {
+                        $("#prevPageA").click(function () {
+                            prevPage = prevPage - nextPage;
+                            if (prevPage == 0) {
+                                prevPage = 0;
+                            }
+                            getSort(sort, key, prevPage, nextPage);
+                        });
+                        $("#nextPageA").click(function () {
+
+                            if (prevPage > page - nextPage) {
+                                prevPage = nextPage;
+
+                            } else {
+                                prevPage = prevPage + nextPage;
+                            }
+                            getSort(sort, key, prevPage, nextPage);
+                        });
+                    }
+                });
             }
         });
     }
 
 
+    ad();
+
+    function ad() {
+        var timer = null;
+        var adNum = 11;
+        setTimeout(function () {
+            $("#Adbox").show();
+            timer = setInterval(function () {
+                adNum--;
+                $("#Adspan").html(adNum);
+                if (adNum <= 0) {
+                    clearInterval(timer);
+                    $("#Adbox").hide();
+                    ad();
+                }
+            }, 200);
+        }, 1000);
+        $("#closeBtn").click(function () {
+            $("#Adbox").hide();
+        });
+    }
 
 
-
-
+    var AUDi = document.getElementById("AUD");
+    AUDi.play();
+    $("#closVideoBtn").click(function () {
+        $(this).parent().remove();
+    });
 
     var loginName = getCookie("loginName");
     if (loginName) {
@@ -444,8 +503,8 @@
                 $("#spCar").html(CarNum * 1);
             }
         });
-        $("#spCar_li").click(function(){
-            window.location.href="./html/shoppingcar.html"
+        $("#spCar_li").click(function () {
+            window.location.href = "./html/shoppingcar.html"
         });
     } else {
         $("#dleCookie").hide();
@@ -453,8 +512,8 @@
             window.location.href = "./html/login.html";
         });
         $("#spCar").hide();
-        $("#spCar_li").click(function(){
-            window.location.href="./html/login.html";
+        $("#spCar_li").click(function () {
+            window.location.href = "./html/login.html";
         });
     }
     $("#dleCookie").click(function () {

@@ -85,6 +85,54 @@
             <p class="fr">已选商品<span id="selectgoods">0</span>件</p>
         </div>
     </div>
+
+    <!-- 网页底部 -->
+    <div class="footer">
+        <div class="footercontent center">
+            <ul>
+                <li class="fontBg1"><span>牌服务</span>三大保障</li>
+                <li class="fontBg2"><span>固安全</span>垂直渠道</li>
+                <li class="fontBg3"><span>量库存</span>随心采购</li>
+                <li class="fontBg4"><span>力雄厚</span>上市企业</li>
+            </ul>
+            <dl>
+                <dt>购物指南</dt>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">如何加入</a></dd>
+            </dl>
+            <dl>
+                <dt>如何付款</dt>
+                <dd><a href="#">微信支付</a></dd>
+                <dd><a href="#">中国银联</a></dd>
+                <dd><a href="#">支付宝</a></dd>
+            </dl>
+            <dl>
+                <dt>货物配送</dt>
+                <dd><a href="#">配送方式</a></dd>
+                <dd><a href="#">收费标准</a></dd>
+                <dd><a href="#">注意事项</a></dd>
+            </dl>
+            <dl>
+                <dt>售后服务</dt>
+                <dd><a href="#">售后维修</a></dd>
+                <dd><a href="#">退货说明</a></dd>
+                <dd><a href="#">联系方式</a></dd>
+            </dl>
+            <dl>
+                <dt>关于海明威</dt>
+                <dd><a href="#">商务合作</a></dd>
+                <dd><a href="#">连锁加盟</a></dd>
+                <dd><a href="#">法律声明</a></dd>
+            </dl>
+            <div class="erweiCode fr ">
+                <p>扫码加入</p>
+                <p>海明威买家平台</p>
+            </div>
+        </div>
+        <p class="footer_bottmo">Copyright &copy; 2015-2017 hmwdj.com All Rights Reserved. 威海市海明威集团股份有限公司 版权所有
+            鲁ICP备15012501号</p>
+    </div>
 </body>
 <script>
     var searchStr = window.location.search;
@@ -248,7 +296,7 @@
 
     $("#settlement_btn").click(function () {
         if ($("input[type='checkbox']").is(':checked')) {
-            alert("123");
+            window.location.href = "./address.html"
         } else {
             alert("至少选择一件商品来结算")
         }
@@ -273,8 +321,8 @@
                 $("#spCar").html(CarNum * 1);
             }
         });
-        $("#spCar_li").click(function(){
-            window.location.href="./shoppingcar.html"
+        $("#spCar_li").click(function () {
+            window.location.href = "./shoppingcar.html"
         });
     } else {
         $("#dleCookie").hide();
@@ -282,8 +330,8 @@
             window.location.href = "./login.html"
         });
         $("#spCar").hide();
-        $("#spCar_li").click(function(){
-            window.location.href="./login.html";
+        $("#spCar_li").click(function () {
+            window.location.href = "./login.html";
         });
     }
     $("#dleCookie").click(function () {

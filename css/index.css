@@ -256,7 +256,6 @@
     cursor: pointer;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 1px 1px 1px 1px #c7c7c7 ,-1px -1px 1px 1px #c7c7c7 ;
 }
 
 .f_1box .goods_1f_list li:hover {
@@ -308,4 +307,61 @@
 
 .goods_1f_list span {
     color: #2ba0de
+}
+
+.changePage {
+    width: 200px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.changePage span {
+    color: #1e4450;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.adbox {
+    width: 200px;
+    height: 400px;
+    background-color: rgb(141, 204, 255);
+    position: fixed;
+    right: 0;
+    bottom: 200px;
+    display: none;
+}
+
+.adbox p,
+.adbox span,
+.adbox pre {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.adbox span {
+    color: rgb(238, 255, 0);
+}
+
+.close_Btn {
+    border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.musec {
+    position: fixed;
+    right: 5px;
+    top: 30px;
+}
+
+audio {
+    border: 0;
+}
+.shipin{
+    position: fixed;
+    top: 100px;
+    left: 0;
 }

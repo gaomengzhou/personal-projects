@@ -2,8 +2,11 @@
 @require_once("config.php");
 $sort = $_GET["sort"];
 $key = $_GET["key"];
+$prevPage = $_GET["prevPage"];
+$nextPage = $_GET["nextPage"];
 
-$str = "select  *  from  goodslist  where type=1  and goodsname like '%$key%' order by goodsprice $sort";
+
+$str = "select  *  from  goodslist  where type=1  and goodsname like '%$key%' order by goodsprice $sort limit $prevPage,$nextPage";
 $result = mysql_query($str);
 $list = array();
 while($item = mysql_fetch_array($result)) {

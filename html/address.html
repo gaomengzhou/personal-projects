@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/address.css">
+    <script src="../javaScript/jquery-1.11.3.js"></script>
+    <script src="../javaScript/cookie.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav center">
+            <ul class="left fl">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="#">特接新品</a></li>
+                <li><a href="#">热卖商品</a></li>
+                <li class="borderNone"><a href="#">优惠专区</a></li>
+            </ul>
+            <ul class="right fr">
+                <li><a id="showname" href="#">登入</a></li>
+                <li id="dleCookie" class="dleCookie"><a href="#">退出</a></li>
+                <li id="spCar_li"><a id="spCar_a" href="#">购物车 <span id="spCar">0</span></a></li>
+                <li><a href="#">买家中心</a></li>
+                <li><a href="#">联系我们</a></li>
+                <li><a href="#">企业简介</a></li>
+                <li class="borderNone"><a href="#">帮助中心</a></li>
+            </ul>
+            <!-- logo input login -->
+
+        </div>
+    </div>
+    <div class="headerbottom center">
+        <div class="logo fl">
+            <a href="../index.html"><img src="../images/logo.png" alt=""></a>
+        </div>
+        <div class="search fl">
+            <input id="search_input" type="text" class="search_input" placeholder="商品种类7523款"><button class="search_btn"
+                id="search_btn">搜
+                索</button>
+            <p>热门搜索 ：<a href="#">刀锋战士</a>
+                <a href="#">钓箱</a>
+                <a href="#">线</a>
+                <a href="#">轮</a>
+                <a href="#">太空豆</a>
+                <a href="#">路亚竿</a>
+            </p>
+        </div>
+        <div class="login fr">
+            <p id="login_P" class="fl"><span class="login_span"></span>买家登入</p>
+            <p id="register_P" class="fl"><span class="register_span"></span>申请注册</p>
+        </div>
+    </div>
+    <!-- 地址信息 -->
+    <div class="address center">
+        <h3>详细信息</h3>
+        <label for="username">真实姓名:</label><input type="text" name="" id="username">
+        <label for="usertel">联系方式:</label><input type="text" name="" id="usertel"><br>
+        <textarea name="" id="" cols="60" rows="10" placeholder="配送地址:..."></textarea>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 网页底部 -->
+    <div class="footer">
+        <div class="footercontent center">
+            <ul>
+                <li class="fontBg1"><span>牌服务</span>三大保障</li>
+                <li class="fontBg2"><span>固安全</span>垂直渠道</li>
+                <li class="fontBg3"><span>量库存</span>随心采购</li>
+                <li class="fontBg4"><span>力雄厚</span>上市企业</li>
+            </ul>
+            <dl>
+                <dt>购物指南</dt>
+                <dd><a href="#">常见问题</a></dd>
+                <dd><a href="#">购物流程</a></dd>
+                <dd><a href="#">如何加入</a></dd>
+            </dl>
+            <dl>
+                <dt>如何付款</dt>
+                <dd><a href="#">微信支付</a></dd>
+                <dd><a href="#">中国银联</a></dd>
+                <dd><a href="#">支付宝</a></dd>
+            </dl>
+            <dl>
+                <dt>货物配送</dt>
+                <dd><a href="#">配送方式</a></dd>
+                <dd><a href="#">收费标准</a></dd>
+                <dd><a href="#">注意事项</a></dd>
+            </dl>
+            <dl>
+                <dt>售后服务</dt>
+                <dd><a href="#">售后维修</a></dd>
+                <dd><a href="#">退货说明</a></dd>
+                <dd><a href="#">联系方式</a></dd>
+            </dl>
+            <dl>
+                <dt>关于海明威</dt>
+                <dd><a href="#">商务合作</a></dd>
+                <dd><a href="#">连锁加盟</a></dd>
+                <dd><a href="#">法律声明</a></dd>
+            </dl>
+            <div class="erweiCode fr ">
+                <p>扫码加入</p>
+                <p>海明威买家平台</p>
+            </div>
+        </div>
+        <p class="footer_bottmo">Copyright &copy; 2015-2017 hmwdj.com All Rights Reserved. 威海市海明威集团股份有限公司 版权所有
+            鲁ICP备15012501号</p>
+    </div>
+</body>
+<script>
+    var loginId = getCookie("loginId");
+
+
+
+
+
+
+
+
+    var loginName = getCookie("loginName");
+    if (loginName) {
+        $("#showname").html(loginName);
+        $("#dleCookie").show();
+        $("#login_P").hide();
+        $("#register_P").hide();
+        $.ajax({
+            type: "get",
+            url: "../php/searchSpCar.php",
+            dataType: "json",
+            success: function (CarNum) {
+                $("#spCar").html(CarNum * 1);
+            }
+        });
+        $("#spCar_li").click(function () {
+            window.location.href = "./shoppingcar.html"
+        });
+    } else {
+        $("#dleCookie").hide();
+        $("#showname").click(function () {
+            window.location.href = "./login.html"
+        });
+        $("#spCar").hide();
+        $("#spCar_li").click(function () {
+            window.location.href = "./login.html";
+        });
+    }
+    $("#dleCookie").click(function () {
+        setCookie("loginName", "", -1);
+        setCookie("loginId", "", -1);
+        $("#dleCookie").hide();
+        window.location.reload();
+    });
+
+    $("#login_P").click(function () {
+        window.location.href = "./login.html"
+    });
+    $("#register_P").click(function () {
+        window.location.href = "./register.html"
+    });
+</script>
+
+</html>
