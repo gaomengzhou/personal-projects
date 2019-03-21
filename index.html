@@ -367,7 +367,7 @@
     $("#search_btn").click(function () {
         key = $("#search_input").val()
         getSort(sort, key, prevPage, nextPage);
-        console.log(key);
+        // console.log(key);
     });
 
 
@@ -505,6 +505,7 @@
             dataType: "json",
             success: function (CarNum) {
                 $("#spCar").html(CarNum * 1);
+                getSort();
             }
         });
         $("#spCar_li").click(function () {

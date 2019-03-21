@@ -142,28 +142,30 @@
     var totalHtml = 0;
     var addhtml = 0;
     var loginId = getCookie("loginId");
+    showCar();
 
-    if (loginId) {
-        $.ajax({
-            type: "get",
-            url: "../php/shoppingcar.php",
-            data: {
-                userid: loginId
-            },
-            dataType: "json",
-            success: function (list) {
-                var html = "";
-                for (var i = 0; i < list.length; i++) {
-                    var {
-                        id,
-                        goodsid,
-                        goodsimg,
-                        goodsprice,
-                        goodsname,
-                        num
-                    } = list[i];
-                    html +=
-                        `
+    function showCar() {
+        if (loginId) {
+            $.ajax({
+                type: "get",
+                url: "../php/shoppingcar.php",
+                data: {
+                    userid: loginId
+                },
+                dataType: "json",
+                success: function (list) {
+                    var html = "";
+                    for (var i = 0; i < list.length; i++) {
+                        var {
+                            id,
+                            goodsid,
+                            goodsimg,
+                            goodsprice,
+                            goodsname,
+                            num
+                        } = list[i];
+                        html +=
+                            `
                             <li class="goodsLi" data_goodsid="${goodsid}">
                                 <div class="check_oneDiv fl">
                                     <input type="checkbox" name="check_one" class="checkOne">
@@ -174,68 +176,72 @@
                                 <div class="goods_name_div fl">
                                     <a class="goods_name_a" href="#">${goodsname}</a>
                                 </div>
-                                <span class="moneys">￥</span><span class="goodsprice_span">${goodsprice*1}</span>
+                                <span class="moneys">￥</span><span class="goodsprice_span">${(goodsprice*1).toFixed(2)}</span>
                                 <div class="goodsAddAndReduce">
-                                <button class="reduce" id="reduce" onclick="reduceNumFn('${id}',this)">-</button>
+                                <button class="reduce" id="reduce" onclick="reduceNumFn('${goodsid}',this)">-</button>
                                 <input type="text" class="goods_num" id="goods_num" value="${num}">
-                                <button class="addNum" onclick="addNumFn('${id}',this)">+</button>
+                                <button class="addNum" onclick="addNumFn('${goodsid}',this)">+</button>
                                 </div>
-                                <span class="totLogo">总价:￥</span><span class="totalprice" id="totalprice">${num*goodsprice}</span>
+                                <span class="totLogo">总价:￥</span><span class="totalprice" id="totalprice">${(num*goodsprice).toFixed(2)}</span>
                                 <span class="delete" id="delete" onclick="deleteFn('${id}',this)">删除</span>
                            </li>
                             `
+                    }
+                    $("#shopList").html(html);
                 }
-                $("#shopList").html(html);
+            });
+        }
+    }
 
-
-
+    function addNumFn(goodsid, that) {
+        $.ajax({
+            type: "get",
+            url: "../php/gotoshoppingcar.php",
+            data: {
+                userid: loginId,
+                goodsid: goodsid,
+                num: 1
+            },
+            dataType: "json",
+            success: function (obj) {
+                $(that).prev().prev().attr("disabled", false);
+                $(that).prev().val($(that).prev().val() * 1 + 1);
+                if ($(that).parent().prev().prev().prev().prev().prev().children(".checkOne").prop(
+                        "checked")) {
+                    $("#selectgoods").html($(that).prev().val() *
+                        1);
+                    $("#total").html($(that).prev().val() *
+                        1 * $(that).parent().prev().html());
+                }
+               
             }
         });
     }
-    // $.ajax({
-    //     type: "get",
-    //     url: "../php/gotoshoppingcar.php",
-    //     data: {
-    //         userid: loginId,
-    //         goodsid: $(".goodsLi").attr("goodsLi"),
-    //         num: $(".goods_num").val()
-    //     },
-    //     dataType: "json",
-    //     success: function (obj) {
-    //         if (obj["code"] == 1) {
 
-    //         }
+    function reduceNumFn(goodsid, that) {
 
-
-
-    //     }
-    // });
-
-    function addNumFn(id, that) {
-        $(that).prev().val($(that).prev().val() * 1 + 1);
-        if ($(that).parent().prev().prev().prev().prev().prev().children(".checkOne").prop("checked")) {
-            $("#selectgoods").html(0 + $(that).prev().val() *
-                1);
-            $("#total").html($(that).prev().val() *
-                1 * $(that).parent().prev().html());
-
-        }
-
-
-    }
-
-
-
-    function reduceNumFn(id, that) {
-        $(that).next().val($(that).next().val() - 1);
-        if ($(that).next().val() < 1) {
-            $(that).next().val(0);
-        }
-        if ($(that).parent().prev().prev().prev().prev().prev().children(".checkOne").prop("checked")) {
-            $("#selectgoods").html($(that).next().val() - 0);
-            $("#total").html($(that).next().val() * $(that).parent().prev().html());
-        }
-
+        $.ajax({
+            type: "get",
+            url: "../php/gotoshoppingcar.php",
+            data: {
+                userid: loginId,
+                goodsid: goodsid,
+                num: -1
+            },
+            dataType: "json",
+            success: function (obj) {
+                $(that).next().val($(that).next().val() - 1);
+                if ($(that).next().val() < 1) {
+                    $(that).attr("disabled", true);
+                }
+                if ($(that).parent().prev().prev().prev().prev().prev().children(".checkOne").prop(
+                        "checked")) {
+                    $("#selectgoods").html($(that).next().val());
+                    $("#total").html($(that).next().val() * $(that).parent().prev().html());
+                }
+            
+            }
+        });
     }
 
 
@@ -269,10 +275,10 @@
             $("#checkAll").prop("checked", false);
             $("#selectgoods").html(html -= $(this).parent().next().next().next().next().next().children(
                     ".goods_num").val() *
-                1);
+                1)
             $("#total").html(totalHtml -= $(this).parent().next().next().next().next().next().children(
                     ".goods_num").val() *
-                1 * $(this).parent().next().next().next().next().html());
+                1 * $(this).parent().next().next().next().next().html())
         }
     });
 
