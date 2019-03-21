@@ -246,8 +246,8 @@
         </ul>
     </div>
     <div class="changePage">
-        <span class="fl" id="prevPageA" href="">上一页</span>
-        <span class="fr" id="nextPageA" href="">下一页</span>
+        <button class="fl" id="prevPageA">上一页</button>
+        <button class="fr" id="nextPageA">下一页</button>
     </div>
     <!-- 网页底部 -->
     <div class="footer">
@@ -438,19 +438,23 @@
                     success: function (page) {
                         $("#prevPageA").click(function () {
                             prevPage = prevPage - nextPage;
-                            if (prevPage == 0) {
+                            if (prevPage <= 0) {
                                 prevPage = 0;
+
                             }
+
                             getSort(sort, key, prevPage, nextPage);
                         });
                         $("#nextPageA").click(function () {
 
                             if (prevPage > page - nextPage) {
-                                prevPage = nextPage;
-
+                                // prevPage = nextPage;
+                                // $(this).attr("disabled", true);
+                                $(this).click() = null;
                             } else {
                                 prevPage = prevPage + nextPage;
                             }
+
                             getSort(sort, key, prevPage, nextPage);
                         });
                     }
