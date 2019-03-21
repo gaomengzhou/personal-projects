@@ -21,9 +21,9 @@ function getCookie(key) {
 
 /**
  * 设置cookie
- * @param {*} key   名称
+ * @param {*} key    名称
  * @param {*} value  内容
- * @param {*} days  过期的天数
+ * @param {*} days   过期的天数
  */
 function setCookie(key, value, days, path = "/") {
     var date = new Date();
