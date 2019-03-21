@@ -192,24 +192,24 @@
             }
         });
     }
-    $.ajax({
-        type: "get",
-        url: "../php/gotoshoppingcar.php",
-        data: {
-            userid: loginId,
-            goodsid: $(".goodsLi").attr("goodsLi"),
-            num: $(".goods_num").val()
-        },
-        dataType: "json",
-        success: function (obj) {
-            if (obj["code"] == 1) {
+    // $.ajax({
+    //     type: "get",
+    //     url: "../php/gotoshoppingcar.php",
+    //     data: {
+    //         userid: loginId,
+    //         goodsid: $(".goodsLi").attr("goodsLi"),
+    //         num: $(".goods_num").val()
+    //     },
+    //     dataType: "json",
+    //     success: function (obj) {
+    //         if (obj["code"] == 1) {
 
-            }
+    //         }
 
 
 
-        }
-    });
+    //     }
+    // });
 
     function addNumFn(id, that) {
         $(that).prev().val($(that).prev().val() * 1 + 1);
