@@ -204,16 +204,27 @@
                     <h4 class="fl">新闻公告</h4>
                     <a href="#" class="fr">更多&gt;</a>
                 </div>
-                <div class="newList">
-                    <p><span>&gt;</span><a href="#">海明威16年度全国经销商会议</a>></p>
-                    <p><span>&gt;</span><a href="#">2018海明威年中团建活动</a>></p>
-                    <p><span>&gt;</span><a href="#">中国钓具委员会莅临海明威</a>></p>
-                    <p><span>&gt;</span><a href="#">海明威荣登中国轻工业专项能力</a>></p>
-                    <p><span>&gt;</span><a href="#">恭贺海明威2016-2017年度</a>></p>
-                    <p><span>&gt;</span><a href="#">2017海明威杯全国钓鱼预选赛</a>></p>
-                    <p><span>&gt;</span><a href="#">企业信用报告</a>></p>
-                    <p><span>&gt;</span><a href="#">海明威连锁加盟指南</a>></p>
-                    <p><span>&gt;</span><a href="#">海明威帮您搞定天津展</a>></p>
+                <div id="bignew" class="bignewList">
+                    <div class="newList">
+                        <p><span>&gt;</span><a href="#">海明威16年度全国经销商会议</a></p>
+                        <p><span>&gt;</span><a href="#">2018海明威年中团建活动</a></p>
+                        <p><span>&gt;</span><a href="#">中国钓具委员会莅临海明威</a></p>
+                        <p><span>&gt;</span><a href="#">海明威荣登中国轻工业专项能力</a></p>
+                        <p><span>&gt;</span><a href="#">恭贺海明威2016-2017年度</a></p>
+                        <p><span>&gt;</span><a href="#">2017海明威杯全国钓鱼预选赛</a></p>
+                        <p><span>&gt;</span><a href="#">企业信用报告</a></p>
+                        <p><span>&gt;</span><a href="#">海明威连锁加盟指南</a></p>
+                        <p><span>&gt;</span><a href="#">海明威帮您搞定天津展</a></p>
+                        <p><span>&gt;</span><a href="#">海明威16年度全国经销商会议</a></p>
+                        <p><span>&gt;</span><a href="#">2018海明威年中团建活动</a></p>
+                        <p><span>&gt;</span><a href="#">中国钓具委员会莅临海明威</a></p>
+                        <p><span>&gt;</span><a href="#">海明威荣登中国轻工业专项能力</a></p>
+                        <p><span>&gt;</span><a href="#">恭贺海明威2016-2017年度</a></p>
+                        <p><span>&gt;</span><a href="#">2017海明威杯全国钓鱼预选赛</a></p>
+                        <p><span>&gt;</span><a href="#">企业信用报告</a></p>
+                        <p><span>&gt;</span><a href="#">海明威连锁加盟指南</a></p>
+                        <p><span>&gt;</span><a href="#">海明威帮您搞定天津展</a></p>
+                    </div>
                 </div>
                 <div class="phone_div">
                     <h3 class="fl">全国统一客服电话</h3>
@@ -356,6 +367,43 @@
             showBanner();
         }
     }
+
+
+
+
+    newList();
+    $("#bignew").mouseout(function () {
+        newList();
+    });
+
+    function newList() {
+        var timer2 = null;
+        var speed = -1;
+        var newListDiv = document.querySelector(".newList");
+        var newListTop = parseInt(getStyleArrt(newListDiv, "height"));
+        timer2 = setInterval(function () {
+            newListDiv.style.top = parseInt(getStyleArrt(newListDiv, "top")) + speed + "px";
+            if (parseInt(getStyleArrt(newListDiv, "top")) < -newListTop / 2) {
+                newListDiv.style.top = 0;
+            }
+        }, 50);
+        $("#bignew").mouseover(function () {
+            clearInterval(timer2);
+        });
+    }
+
+
+
+
+    function getStyleArrt(obj, arrt) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(obj)[arrt];
+        } else {
+            return obj.currentStyle[arrt];
+        }
+    }
+
+
     var priceUp = "ASC";
     var priceDown = "desc";
     var paixu = $("#paixu");
@@ -502,10 +550,13 @@
         $.ajax({
             type: "get",
             url: "./php/searchSpCar.php",
+            data: {
+                userid: getCookie("loginId")
+            },
             dataType: "json",
             success: function (CarNum) {
                 $("#spCar").html(CarNum * 1);
-                getSort();
+                getSort(sort, key, prevPage, nextPage);
             }
         });
         $("#spCar_li").click(function () {
