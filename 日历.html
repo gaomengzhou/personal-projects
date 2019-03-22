@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #wrap {
+            width: 400px;
+            margin: 50px auto;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #wrap #head {
+            display: flex;
+            border: 1px solid;
+        }
+
+        #wrap #head #left,
+        #wrap #head #right {
+            width: 30px;
+            height: 30px;
+            background: gray;
+        }
+
+        #wrap #head #center {
+            flex: 1;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title li {
+            flex: 1;
+            border: 1px solid;
+        }
+
+        #content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #content li {
+            width: calc(100% / 7);
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="head">
+            <div id="left">&lt;</div>
+            <div id="center">123123123</div>
+            <div id="right">&gt;</div>
+        </div>
+        <ul id="title">
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+            <li>日</li>
+        </ul>
+        <div id="content">
+            <!-- <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+            <li>26</li>
+            <li>27</li>
+            <li>28</li>
+            <li>29</li>
+            <li>30</li>
+            <li>31</li>
+            <li>32</li>
+            <li>33</li>
+            <li>34</li>
+            <li>35</li>
+            <li>36</li>
+            <li>37</li>
+            <li>38</li>
+            <li>39</li>
+            <li>40</li>
+            <li>41</li>
+            <li>42</li> -->
+        </div>
+    </div>
+</body>
+<script>
+    var left = document.getElementById("left");
+    var center = document.getElementById("center");
+    var right = document.getElementById("right");
+    var content = document.getElementById("content");
+
+    var date = new Date();
+    createRl(date);
+
+    //2019-3-31      减一月   2019-2-31 => 2019-3-3  
+    left.onclick = function () {
+        date.setDate(1);
+        //2019-3-1 减一月 2019-2-1
+        date.setMonth(date.getMonth() - 1);
+        createRl(date);
+    }
+
+    right.onclick = function () {
+        date.setDate(1);
+        //2019-3-1 减一月 2019-2-1
+        date.setMonth(date.getMonth() + 1);
+        createRl(date);
+    }
+
+
+    function createRl(date) {
+
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        center.innerHTML = `${year}年${month}月`;
+
+        var firstDay = getFirstDay(date); //星期几
+        firstDay = firstDay == 0 ? 7 : firstDay;
+        var nowMonthDays = getNowMonthDays(date); //本月天数
+        var prevMonthDays = getPrevMonthDays(date); //上月天数
+
+        var html = "";
+        for (var i = prevMonthDays - firstDay + 2; i <= prevMonthDays; i++) {
+            html += `<li style="background:grey;">${i}</li>`;
+        }
+
+        for (var i = 1; i <= nowMonthDays; i++) {
+            html += `<li>${i}</li>`;
+        }
+        for (var i = 1; i <= 42 - nowMonthDays - firstDay + 1; i++) {
+            html += `<li style="background:gray;">${i}</li>`;
+        }
+        content.innerHTML = html;
+    }
+
+
+
+
+    function getFirstDay(date) { //获取本月第一天星期几
+        var temp = new Date("2000-1-1");
+        temp.setFullYear(date.getFullYear());
+        temp.setMonth(date.getMonth()); //temp   2019-1-1(zh)
+        // var week = temp.getDay();
+        return temp.getDay();
+    }
+
+    function getNowMonthDays(date) { //获取当月有多少天
+        var temp = new Date("2000-1-1");
+        temp.setFullYear(date.getFullYear());
+        temp.setMonth(date.getMonth() + 1); //temp 2019-2-1(zh)
+        temp.setDate(0);
+        return temp.getDate();
+    }
+
+    function getPrevMonthDays(date) { //获取上个月有多少天
+        var temp = new Date("2000-1-1");
+        temp.setFullYear(date.getFullYear());
+        temp.setMonth(date.getMonth()); //temp 2019-1-1(zh)
+        temp.setDate(0);
+        return temp.getDate();
+    }z
+</script>
+
+</html>
