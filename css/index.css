@@ -196,17 +196,20 @@
     width: 240px;
     height: 30px;
 }
-.bignewList{
+
+.bignewList {
     width: 220px;
     height: 270px;
     overflow: hidden;
     position: relative;
 }
-.bignewList .newList{
+
+.bignewList .newList {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 .banner_right .newList p span {
     color: #f60;
 }
@@ -367,10 +370,15 @@
     top: 30px;
 }
 
+.musec {
+    display: none;
+}
+
 audio {
     border: 0;
 }
-.shipin{
+
+.shipin {
     position: fixed;
     top: 100px;
     left: 0;
